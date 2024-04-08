@@ -16,6 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: |
+        sudo apt install openjdk-17-jdk
         export GRADLE_USER_HOME=$(pwd)/.gradle
         chmod +x ./gradlew
         ./gradlew assembleRelease
