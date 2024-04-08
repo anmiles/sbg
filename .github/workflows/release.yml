@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: jangrewe/gitlab-ci-androids
+      image: jangrewe/gitlab-ci-android
     timeout-minutes: 30
     steps:
     - uses: actions/checkout@v4
