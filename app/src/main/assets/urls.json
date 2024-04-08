@@ -1,0 +1,56 @@
+{
+	"homepage": {
+		"local": "",
+		"remote": "https://sbg-game.ru/",
+		"download": false,
+		"asset": false
+	},
+	"game": {
+		"local": "",
+		"remote": "https://sbg-game.ru/app",
+		"download": false,
+		"asset": false
+	},
+	"login": {
+		"local": "",
+		"remote": "https://sbg-game.ru/login",
+		"download": false,
+		"asset": false
+	},
+	"desktop": {
+		"local": "sbg.plus.user.js",
+		"remote": "https://raw.githubusercontent.com/anmiles/userscripts/main/dist/sbg.plus.user.js",
+		"download": false,
+		"asset": false
+	},
+	"mobile": {
+		"local": "sbg.plus.user.min.js",
+		"remote": "https://raw.githubusercontent.com/anmiles/userscripts/main/dist/sbg.plus.user.min.js",
+		"download": false,
+		"asset": true
+	},
+	"intel": {
+		"local": "intel.js",
+		"remote": "https://sbg-game.ru/app/intel.js",
+		"download": true,
+		"asset": false
+	},
+	"script": {
+		"local": "script.js",
+		"remote": "https://sbg-game.ru/app/script.js",
+		"download": true,
+		"asset": true
+	},
+	"cui": {
+		"local": "nicko.js",
+		"remote": "https://raw.githubusercontent.com/nicko-v/sbg-cui/main/index.js",
+		"download": true,
+		"asset": true
+	},
+	"eui": {
+		"local": "egor.js",
+		"remote": "https://github.com/egorantonov/sbg-enhanced/releases/latest/download/eui.user.js",
+		"download": true,
+		"asset": true
+	}
+}

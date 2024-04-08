@@ -1,0 +1,104 @@
+plugins {
+	id 'com.android.application'
+}
+
+android {
+	namespace 'net.anmiles.sbg'
+	compileSdk 33
+
+	defaultConfig {
+		applicationId "net.anmiles.sbg"
+		minSdk 24
+		targetSdk 33
+		versionCode 1
+		versionName "1.0.0"
+	}
+
+	ext.buildString = { String separator, List<String> list ->
+		return String.join(separator, list.stream().filter(s -> !s.isEmpty()).toArray(String[]::new))
+	}
+
+	buildFeatures {
+		buildConfig = true
+	}
+
+	buildTypes {
+		applicationVariants.all { variant ->
+			def mergedFlavor = variant.getMergedFlavor()
+
+			def presetFlavor = variant.productFlavors.find{ flavor -> flavor.getFlavorDimension() == "preset" }
+			def scriptFlavor = variant.productFlavors.find{ flavor -> flavor.getFlavorDimension() == "script" }
+
+			def preset = presetFlavor.name
+			def script = scriptFlavor.name == "local" ? "local" : ""
+
+			def filename = buildString(".", [ "sbg", preset, script, "apk" ])
+			variant.outputs.each{ output -> output.outputFileName = filename }
+
+			def appId = buildString(".", [ defaultConfig.applicationId, preset, script ])
+			mergedFlavor.setApplicationId(appId)
+
+			def baseAppName = scriptFlavor.name == "local" ? "SBGx" : "SBG"
+			def appName = buildString(" ", [ baseAppName, preset ])
+			variant.resValue "string", "app_name", appName
+		}
+
+		release {
+			minifyEnabled true
+			shrinkResources true
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+		}
+	}
+
+	variantFilter { variant ->
+		if (variant.buildType.name.equals('release') == variant.flavors*.name.contains("local")) {
+			setIgnore(true);
+		}
+	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+
+	flavorDimensions "preset", "script"
+
+	productFlavors {
+		noscript {
+			dimension "preset"
+			buildConfigField "String", "preset", "\"noscript\""
+		}
+		nicoscript {
+			dimension "preset"
+			buildConfigField "String", "preset", "\"nicoscript\""
+		}
+		egorscript {
+			dimension "preset"
+			buildConfigField "String", "preset", "\"egorscript\""
+		}
+		allscripts {
+			dimension "preset"
+			buildConfigField "String", "preset", "\"allscripts\""
+		}
+		full {
+			dimension "preset"
+			buildConfigField "String", "preset", "\"full\""
+		}
+
+		local {
+			dimension "script"
+			buildConfigField "String", "script", "\"local\""
+		}
+		remote {
+			dimension "script"
+			buildConfigField "String", "script", "\"remote\""
+		}
+	}
+}
+
+dependencies {
+	implementation 'androidx.appcompat:appcompat:1.6.1'
+	implementation 'com.google.android.material:material:1.8.0'
+	implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+	implementation 'androidx.webkit:webkit:1.6.1'
+}
