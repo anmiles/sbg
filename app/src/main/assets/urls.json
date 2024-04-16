@@ -1,20 +1,20 @@
 {
 	"homepage": {
-		"local": "",
+		"local": "index.html",
 		"remote": "https://sbg-game.ru/",
-		"download": false,
+		"download": true,
 		"asset": false
 	},
 	"game": {
-		"local": "",
+		"local": "app.html",
 		"remote": "https://sbg-game.ru/app",
-		"download": false,
+		"download": true,
 		"asset": false
 	},
 	"login": {
-		"local": "",
+		"local": "login.html",
 		"remote": "https://sbg-game.ru/login",
-		"download": false,
+		"download": true,
 		"asset": false
 	},
 	"desktop": {
