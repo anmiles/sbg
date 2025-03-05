@@ -28,20 +28,28 @@ public class Caller {
 		try {
 			return fn.call();
 		} catch (Exception e) {
-			this.alert(e.toString());
-			this.consoleError(e);
-			e.printStackTrace();
+			try {
+				this.alert(e.toString());
+				this.consoleError(e);
+			} catch (Exception inner) {
+			} finally {
+				e.printStackTrace();
+			}
 			return null;
 		}
 	}
 
-	public void alert(String message) {
+	public void alert(String message) throws Exception {
+		if (this.activity.webView == null) {
+			throw new Exception("Cannot alert message: " + message);
+		}
+
 		this.activity.webView.post(() -> {
 			Toast.makeText(this.activity, message, Toast.LENGTH_LONG).show();
 		});
 	}
 
-	private void consoleError(Exception exception) {
+	private void consoleError(Exception exception) throws Exception {
 		ArrayList<String> lines = new ArrayList<>();
 
 		lines.add(exception.getMessage());
@@ -50,8 +58,14 @@ public class Caller {
 			lines.add("    at " + element.toString());
 		}
 
+		String message = this.escapeJS(lines.toArray(new String[0]));
+
+		if (this.activity.webView == null) {
+			throw new Exception("Cannot alert error message: " + message);
+		}
+
 		this.activity.webView.post(() -> {
-			this.activity.scriptLoader.embedScript("console.error(" + this.escapeJS(lines.toArray(new String[0])) + ")");
+			this.activity.scriptLoader.embedScript("console.error(" + message + ")");
 		});
 	}
 }
