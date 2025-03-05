@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ScriptLoader {
 	public final MainActivity activity;
@@ -70,10 +72,18 @@ public class ScriptLoader {
 		});
 	}
 
+	private String noCache(String link) {
+		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+
+		return link.contains("?")
+			? link + "&nocache=" + timestamp
+			: link + "?nocache=" + timestamp;
+	}
+
 	private String loadScript(String link) {
 		return this.activity.caller.call(() -> {
 			StringBuilder script = new StringBuilder();
-			URL url = new URL(link);
+			URL url = new URL(noCache(link));
 			BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 			String line;
 
