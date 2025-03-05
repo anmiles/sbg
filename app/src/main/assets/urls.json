@@ -19,13 +19,13 @@
 	},
 	"desktop": {
 		"local": "sbg.plus.user.js",
-		"remote": "https://raw.githubusercontent.com/anmiles/userscripts/main/dist/sbg.plus.user.js",
+		"remote": "https://raw.githubusercontent.com/anmiles/userscripts/main/public/sbg.plus.user.js",
 		"download": false,
 		"asset": false
 	},
 	"mobile": {
 		"local": "sbg.plus.user.min.js",
-		"remote": "https://raw.githubusercontent.com/anmiles/userscripts/main/dist/sbg.plus.user.min.js",
+		"remote": "https://raw.githubusercontent.com/anmiles/userscripts/main/public/sbg.plus.user.min.js",
 		"download": false,
 		"asset": true
 	},

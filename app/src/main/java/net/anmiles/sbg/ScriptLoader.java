@@ -1,5 +1,7 @@
 package net.anmiles.sbg;
 
+import android.util.Log;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
