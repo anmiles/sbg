@@ -49,7 +49,19 @@ public class Caller {
 		});
 	}
 
-	private void consoleError(Exception exception) throws Exception {
+	public void consoleLog(String message) throws Exception {
+		String escapedMessage = this.escapeJS(new String[]{ message });
+
+		if (this.activity.webView == null) {
+			throw new Exception("Cannot log message: " + escapedMessage);
+		}
+
+		this.activity.webView.post(() -> {
+			this.activity.scriptLoader.embedScript("console.log(" + escapedMessage + ")");
+		});
+	}
+
+	public void consoleError(Exception exception) throws Exception {
 		ArrayList<String> lines = new ArrayList<>();
 
 		lines.add(exception.getMessage());

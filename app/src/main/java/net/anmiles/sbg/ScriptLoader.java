@@ -1,8 +1,8 @@
 package net.anmiles.sbg;
 
-import android.util.Log;
-
 import org.json.JSONObject;
+
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -86,11 +86,17 @@ public class ScriptLoader {
 		return this.activity.caller.call(() -> {
 			StringBuilder script = new StringBuilder();
 			URL url = new URL(noCache(link));
+			this.activity.caller.consoleLog(url.toString());
 			BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 			String line;
+			Boolean lineShown = false;
 
 			while ((line = reader.readLine()) != null) {
 				if (!line.startsWith("//")) {
+					if (!lineShown) {
+						this.activity.caller.consoleLog(line);
+						lineShown = true;
+					}
 					script.append(line).append("\n");
 				}
 			}
