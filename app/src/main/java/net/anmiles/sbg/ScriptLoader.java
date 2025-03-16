@@ -2,8 +2,6 @@ package net.anmiles.sbg;
 
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -30,12 +28,11 @@ public class ScriptLoader {
 		});
 	}
 
-	public void embedScripts(JSONObject urls) {
+	public void embedScripts() {
 		if (BuildConfig.preset == "noscript") {
 			return;
 		}
 
-		this.embedScript("window.__sbg_urls = " + urls.toString() + ";");
 		this.embedScript("window.__sbg_local = " + (BuildConfig.script == "local" ? "true" : "false") + ";");
 		this.embedScript("window.__sbg_preset = '" + BuildConfig.preset + "';");
 		this.embedScript("window.__sbg_package = '" + BuildConfig.APPLICATION_ID + "';");
@@ -86,7 +83,7 @@ public class ScriptLoader {
 		return this.activity.caller.call(() -> {
 			StringBuilder script = new StringBuilder();
 			URL url = new URL(noCache(link));
-			this.activity.caller.consoleLog(url.toString());
+			Logger.debug("Script URL: " + url.toString());
 			BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 			String line;
 			Boolean lineShown = false;
@@ -94,7 +91,7 @@ public class ScriptLoader {
 			while ((line = reader.readLine()) != null) {
 				if (!line.startsWith("//")) {
 					if (!lineShown) {
-						this.activity.caller.consoleLog(line);
+						Logger.debug("Script starts with: " + (line.length() > 100 ? line.substring(0, 100) : line));
 						lineShown = true;
 					}
 					script.append(line).append("\n");

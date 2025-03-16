@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
 	public WebView webView;
 	public Boolean backButtonEnabled;
 
-	private JSONObject urls;
-
 	@Override
 	@SuppressLint("SetJavaScriptEnabled")
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
 		this.scriptLoader = new ScriptLoader(this);
 		this.caller = new Caller(this);
 
-		this.urls = this.caller.call(() -> new JSONObject(this.scriptLoader.readAsset("urls.json")));
+		JSONObject urls = this.caller.call(() -> new JSONObject(this.scriptLoader.readAsset("urls.json")));
 
-		this.scriptLoader.getScripts(this.urls);
+		this.scriptLoader.getScripts(urls);
 
 		this.webView = this.findViewById(R.id.webview);
 
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 		this.webView.addJavascriptInterface(new ShareInterface(this), "__sbg_share");
 
 		if (savedInstanceState == null) {
-			String startUrl = this.caller.call(() -> this.urls.getJSONObject("homepage").getString("remote"));
+			String startUrl = this.caller.call(() -> urls.getJSONObject("homepage").getString("remote"));
 			this.webView.loadUrl(startUrl);
 		}
 	}
@@ -103,6 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
 	public void onPageStarted() {
 		this.backButtonEnabled = false;
-		this.scriptLoader.embedScripts(this.urls);
+		this.scriptLoader.embedScripts();
 	}
 }
