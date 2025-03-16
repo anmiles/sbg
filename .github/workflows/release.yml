@@ -25,11 +25,6 @@ jobs:
     - run: echo $RELEASE_STORE | base64 --decode > app/keystore.jks
       env:
         RELEASE_STORE: ${{ secrets.RELEASE_STORE }}
-    - run: ./gradlew assembleDebug
-      env:
-        RELEASE_STORE_FILE: keystore.jks
-        RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
-        RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
     - run: ./gradlew assembleRelease
       env:
         RELEASE_STORE_FILE: keystore.jks
@@ -39,4 +34,4 @@ jobs:
       with:
         body_path: RELEASE.md
         files: app/build/outputs/apk/**/*.apk
-        draft: true
+        make_latest: true
