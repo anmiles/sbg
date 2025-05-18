@@ -1,0 +1,22 @@
+{
+	"version": "0.2",
+	"enabled": true,
+	"language": "en",
+	"minWordLength": 4,
+	"enableGlobDot": true,
+	"useGitignore": true,
+	"ignorePaths": [
+		".git"
+	],
+	"words": [
+		"allscripts",
+		"anmiles",
+		"backbutton",
+		"egorscript",
+		"fqcn",
+		"keepclassmembers",
+		"nicoscript",
+		"proguard"
+	],
+	"flagWords": []
+}
