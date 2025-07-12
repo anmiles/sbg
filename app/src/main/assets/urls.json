@@ -49,7 +49,7 @@
 	},
 	"eui": {
 		"local": "egor.js",
-		"remote": "https://github.com/egorantonov/sbg-enhanced/releases/latest/download/eui.user.js",
+		"remote": "https://github.com/egorantonov/sbg-enhanced/releases/latest/download/cui.user.js",
 		"download": true,
 		"asset": true
 	}
