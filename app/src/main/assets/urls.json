@@ -43,13 +43,13 @@
 	},
 	"cui": {
 		"local": "nicko.js",
-		"remote": "https://raw.githubusercontent.com/nicko-v/sbg-cui/main/index.js",
+		"remote": "https://github.com/egorantonov/sbg-enhanced/releases/latest/download/cui.user.js",
 		"download": true,
 		"asset": true
 	},
 	"eui": {
 		"local": "egor.js",
-		"remote": "https://github.com/egorantonov/sbg-enhanced/releases/latest/download/cui.user.js",
+		"remote": "https://github.com/egorantonov/sbg-enhanced/releases/latest/download/eui.user.js",
 		"download": true,
 		"asset": true
 	}
