@@ -19,13 +19,13 @@
 	},
 	"desktop": {
 		"local": "sbg.plus.user.js",
-		"remote": "https://raw.githubusercontent.com/anmiles/userscripts/main/public/sbg.plus.user.js",
+		"remote": "https://raw.githubusercontent.com/pr0head/userscripts/main/public/sbg.plus.user.js",
 		"download": false,
 		"asset": false
 	},
 	"mobile": {
 		"local": "sbg.plus.user.min.js",
-		"remote": "https://raw.githubusercontent.com/anmiles/userscripts/main/public/sbg.plus.user.min.js",
+		"remote": "https://raw.githubusercontent.com/pr0head/userscripts/main/public/sbg.plus.user.min.js",
 		"download": false,
 		"asset": true
 	},
@@ -41,9 +41,15 @@
 		"download": true,
 		"asset": true
 	},
+	"cui": {
+		"local": "nicko.js",
+		"remote": "https://github.com/egorantonov/sbg-enhanced/releases/latest/download/cui.user.js",
+		"download": true,
+		"asset": true
+	},
 	"eui": {
 		"local": "egor.js",
-		"remote": "https://github.com/egorantonov/sbg-enhanced/releases/download/6.6.3/index.js",
+		"remote": "https://github.com/egorantonov/sbg-enhanced/releases/latest/download/eui.user.js",
 		"download": true,
 		"asset": true
 	}
