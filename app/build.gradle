@@ -82,6 +82,10 @@ android {
 			dimension "preset"
 			buildConfigField "String", "preset", "\"noscript\""
 		}
+		nicoscript {
+			dimension "preset"
+			buildConfigField "String", "preset", "\"nicoscript\""
+		}
 		egorscript {
 			dimension "preset"
 			buildConfigField "String", "preset", "\"egorscript\""
