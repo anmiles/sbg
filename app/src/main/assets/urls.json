@@ -19,13 +19,13 @@
 	},
 	"desktop": {
 		"local": "sbg.plus.user.js",
-		"remote": "https://raw.githubusercontent.com/anmiles/userscripts/main/public/sbg.plus.user.js",
+		"remote": "https://raw.githubusercontent.com/pr0head/userscripts/main/public/sbg.plus.user.js",
 		"download": false,
 		"asset": false
 	},
 	"mobile": {
 		"local": "sbg.plus.user.min.js",
-		"remote": "https://raw.githubusercontent.com/anmiles/userscripts/main/public/sbg.plus.user.min.js",
+		"remote": "https://raw.githubusercontent.com/pr0head/userscripts/main/public/sbg.plus.user.min.js",
 		"download": false,
 		"asset": true
 	},
@@ -43,7 +43,7 @@
 	},
 	"cui": {
 		"local": "nicko.js",
-		"remote": "https://raw.githubusercontent.com/nicko-v/sbg-cui/main/index.js",
+		"remote": "https://github.com/egorantonov/sbg-enhanced/releases/latest/download/cui.user.js",
 		"download": true,
 		"asset": true
 	},
